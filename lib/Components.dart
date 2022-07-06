@@ -83,66 +83,88 @@ class Add_to_Cart extends StatelessWidget {
   }
 }
 
-class QTY extends StatelessWidget {
+class QTY extends StatefulWidget {
   late int? qty;
 
-  QTY({Key? key, this.qty}) : super(key: key);
+  QTY({Key? key, this.qty = 0}) : super(key: key);
 
-  int add(int i) {
-    return i + 1;
-  }
+  @override
+  State<QTY> createState() => _QTYState(qty!);
+}
 
-  int sub(int i) {
-    if (i != 1) {
-      i = i - 1;
-    }
-    return i;
-  }
+class _QTYState extends State<QTY> {
+  int qty = 0;
+  _QTYState(this.qty);
+
+
 
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
+      padding: const EdgeInsets.all(10),
+      decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(
           Radius.circular(20),
         ),
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(color: Colors.grey, blurRadius: 5.0, offset: Offset(0, 5)),
         ],
       ),
       child: Row(
-        children: [
-          Container(
-            margin: EdgeInsets.only(right: 15),
-            child: Icon(
-              Icons.remove_rounded,
+        children: <Widget>[
+          widget.qty != 0
+              ? IconButton(
+                  icon: const Icon(
+                    Icons.remove_rounded,
+                    size: 25,
+                    color: Colors.orangeAccent,
+                  ),
+                  onPressed: () => setState(() => qty--),
+                )
+              : Container(),
+          // Text(widget.qty.toString()),
+          BigText(
+            text: widget.qty.toString(),
+            color: Colors.orangeAccent,
+          ),
+          IconButton(
+            icon: const Icon(
+              Icons.add_rounded,
               size: 25,
               color: Colors.orangeAccent,
             ),
-          ),
-          GestureDetector(
-            onTap: () => {sub(qty!)},
-            child: Container(
-              margin: EdgeInsets.only(right: 15),
-              child: BigText(
-                text: qty.toString(),
-                color: Colors.orangeAccent,
-              ),
-            ),
-          ),
-          GestureDetector(
-            onTap: () => {add(qty!)},
-            child: Container(
-              child: Icon(
-                Icons.add_rounded,
-                size: 25,
-                color: Colors.orangeAccent,
-              ),
-            ),
+            onPressed: () => setState(() => qty++),
           ),
         ],
       ),
+
+      // child: Row(
+      //   children: [
+      //     Container(
+      //       margin: EdgeInsets.only(right: 15),
+      //       child: Icon(
+      //         Icons.remove_rounded,
+      //         size: 25,
+      //         color: Colors.orangeAccent,
+      //       ),
+      //     ),
+      //     GestureDetector(
+      //       onTap: () {},
+      //       child: Container(
+      //         margin: EdgeInsets.only(right: 15),
+      //         child: BigText(
+      //           text: qty.toString(),
+      //           color: Colors.orangeAccent,
+      //         ),
+      //       ),
+      //     ),
+      //     Icon(
+      //       Icons.add_rounded,
+      //       size: 25,
+      //       color: Colors.orangeAccent,
+      //     ),
+      //   ],
+      // ),
     );
   }
 }

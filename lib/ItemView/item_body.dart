@@ -131,6 +131,8 @@ class ItemBody extends StatelessWidget {
                           qty: qty,
                         ),
                       ),
+
+                      //Here we write to the database once food is added to the cart, we will wrap it inside Gesturedetector
                       Container(
                         margin: EdgeInsets.only(left: 10),
                         child: Add_to_Cart(
