@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_order_app/Components.dart';
+// import 'package:restaurant_order_app/Components.dart';
 
+import '../Components.dart';
 import '../ItemView/main_item_view.dart';
 
 final List<Map<String, String>> afternoonJsonString = [

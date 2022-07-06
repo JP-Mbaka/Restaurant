@@ -1,4 +1,4 @@
-# restaurant_order_app
+# Nat Restaurant
 
 A new Flutter project.
 

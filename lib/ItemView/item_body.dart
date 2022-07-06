@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_order_app/Checkout/chk_out.dart';
-import 'package:restaurant_order_app/Components.dart';
-import 'package:restaurant_order_app/Dashboard/body.dart';
-import 'package:restaurant_order_app/Dashboard/recommend.dart';
+
+import '../Checkout/chk_out.dart';
+import '../Components.dart';
+import '../Dashboard/recommend.dart';
+// import 'package:restaurant_order_app/Checkout/chk_out.dart';
+// import 'package:restaurant_order_app/Components.dart';
+// import 'package:restaurant_order_app/Dashboard/body.dart';
+// import 'package:restaurant_order_app/Dashboard/recommend.dart';
 
 class ItemBody extends StatelessWidget {
   int qty = 1;

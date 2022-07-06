@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_order_app/Checkout/chk_out.dart';
-import 'package:restaurant_order_app/Components.dart';
-import 'package:restaurant_order_app/Dashboard/Items_list.dart';
-import 'package:restaurant_order_app/Dashboard/recommend.dart';
+
+import '../Checkout/chk_out.dart';
+import '../Components.dart';
+import 'Items_list.dart';
+import 'recommend.dart';
+// import 'package:restaurant_order_app/Checkout/chk_out.dart';
+// import 'package:restaurant_order_app/Components.dart';
+// import 'package:restaurant_order_app/Dashboard/Items_list.dart';
+// import 'package:restaurant_order_app/Dashboard/recommend.dart';
 
 class Body extends StatelessWidget {
   late String greeting;

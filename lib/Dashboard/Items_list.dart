@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_order_app/ItemView/main_item_view.dart';
+// import 'package:restaurant_order_app/ItemView/main_item_view.dart';
 
 import '../Components.dart';
+import '../ItemView/main_item_view.dart';
 
 final List<Map<String, String>> JsonString = [
   {"period": "2", "id": "1", "food": "White Rice & stew", "price": "800"},

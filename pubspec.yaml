@@ -1,5 +1,5 @@
-name: restaurant_order_app
-description: A new Flutter project.
+name: NatRest
+description: A Restaurant application that recommends food based on content-based filtering using time as constraints
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -29,6 +29,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  sqflite: any
+  path_provider: any  
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_order_app/Checkout/chk_list.dart';
-import 'package:restaurant_order_app/Components.dart';
+// import 'package:restaurant_order_app/Checkout/chk_list.dart';
+// import 'package:restaurant_order_app/Components.dart';
+
+import '../Components.dart';
+import 'chk_list.dart';
 
 class CheckOut extends StatefulWidget {
   @override
