@@ -42,16 +42,18 @@ class _CheckOutState extends State<CheckOut> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SmallText(text: "Total"),
-              BigText(text: "₦ 3600", color: Colors.orangeAccent,)
+              BigText(
+                text: "₦ 3600",
+                color: Colors.orangeAccent,
+              )
             ],
           ),
         ),
         ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
-              primary: Colors.orangeAccent,
-              padding: const EdgeInsets.symmetric(horizontal: 50)
-            ),
+                primary: Colors.orangeAccent,
+                padding: const EdgeInsets.symmetric(horizontal: 50)),
             child: BigText(
               text: "Check Out",
               color: Colors.white,

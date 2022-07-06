@@ -3,19 +3,31 @@ import 'package:flutter/material.dart';
 import '../Checkout/chk_out.dart';
 import '../Components.dart';
 import '../Dashboard/recommend.dart';
-// import 'package:restaurant_order_app/Checkout/chk_out.dart';
-// import 'package:restaurant_order_app/Components.dart';
-// import 'package:restaurant_order_app/Dashboard/body.dart';
-// import 'package:restaurant_order_app/Dashboard/recommend.dart';
 
-class ItemBody extends StatelessWidget {
-  int qty = 1;
+class ItemBody extends StatefulWidget {
   String? id;
   String? food;
   String? price;
 
   ItemBody({Key? key, this.id, this.food, this.price}) : super(key: key);
 
+  @override
+  State<ItemBody> createState() => _ItemBodyState(
+        id: id,
+        food: food,
+        price: price,
+      );
+}
+
+class _ItemBodyState extends State<ItemBody> {
+  String? id;
+  String? food;
+  String? price;
+  int qty = 1;
+
+  _ItemBodyState({this.id, this.food, this.price});
+
+  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
@@ -30,7 +42,7 @@ class ItemBody extends StatelessWidget {
             color: Colors.cyanAccent,
             image: DecorationImage(
               fit: BoxFit.cover,
-              image: AssetImage("assets/images/food/$id.jpeg"),
+              image: AssetImage("assets/images/food/${widget.id}.jpeg"),
             ),
           ),
           child: Row(
@@ -106,7 +118,7 @@ class ItemBody extends StatelessWidget {
                     height: 20,
                   ),
                   BigText(
-                    text: food.toString(),
+                    text: widget.food.toString(),
                     color: Colors.black87,
                   ),
                   const SizedBox(
@@ -136,7 +148,7 @@ class ItemBody extends StatelessWidget {
                       Container(
                         margin: EdgeInsets.only(left: 10),
                         child: Add_to_Cart(
-                          price: price,
+                          price: widget.price,
                         ),
                       ),
                     ],

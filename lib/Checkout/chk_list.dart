@@ -1,7 +1,4 @@
-import 'dart:ffi';
-
 import 'package:NatRest/Components.dart';
-import 'package:NatRest/Controller/dbConnect.dart';
 import 'package:NatRest/Controller/dbModel.dart';
 import 'package:flutter/material.dart';
 // import 'package:restaurant_order_app/Components.dart';
@@ -14,7 +11,7 @@ class MyCheckList extends StatefulWidget {
 }
 
 class _MyCheckListState extends State<MyCheckList> {
-  List<Order> orders = [];
+  List<Order> orders = Orderfields.orders;
 
   late Order sample;
 
@@ -65,11 +62,12 @@ class _MyCheckListState extends State<MyCheckList> {
                             const BorderRadius.all(Radius.circular(20)),
                         image: DecorationImage(
                             fit: BoxFit.cover,
-                            image: AssetImage("assets/images/food/${e.id}.jpeg"))),
+                            image:
+                                AssetImage("assets/images/food/${e.id}.jpeg"))),
                   ),
                   Container(
                     margin: const EdgeInsets.only(left: 10),
-                    child: QTY(
+                    child: QTY_s(
                       qty: int.parse(e.qty),
                     ),
                   ),
@@ -85,22 +83,4 @@ class _MyCheckListState extends State<MyCheckList> {
             }).toList(),
           );
   }
-}
-
-class Order {
-  String id;
-  String index;
-  String foodname;
-  String foodprice;
-  String qty;
-  String total;
-
-  Order({
-    required this.id,
-    required this.index,
-    required this.foodname,
-    required this.foodprice,
-    required this.qty,
-    required this.total,
-  });
 }

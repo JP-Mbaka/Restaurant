@@ -1,44 +1,58 @@
 import 'dart:ui';
 
+import 'package:NatRest/Controller/dbModel.dart';
 import 'package:flutter/material.dart';
 
-class QTY_s extends StatelessWidget {
-  const QTY_s({Key? key}) : super(key: key);
+class QTY_s extends StatefulWidget {
+  late int? qty;
+
+  QTY_s({Key? key, this.qty}) : super(key: key);
+
+  @override
+  State<QTY_s> createState() => _QTY_sState(qty!);
+}
+
+class _QTY_sState extends State<QTY_s> {
+  int id;
+
+  _QTY_sState(this.id);
+
+  void _removeMe() {
+    setState(() {
+      Orderfields.orders.removeWhere((element) => element.id == id as String);
+    });
+  }
 
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
+      padding: const EdgeInsets.all(10),
+      decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(
           Radius.circular(20),
         ),
-        boxShadow: const [
+        boxShadow: [
           BoxShadow(color: Colors.grey, blurRadius: 5.0, offset: Offset(0, 5)),
         ],
       ),
       child: Row(
         children: [
           Container(
-            // margin: EdgeInsets.only(right: 5),
-            child: Icon(
-              Icons.remove_rounded,
-              size: 20,
-              color: Colors.orangeAccent,
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(right: 5),
+            margin: EdgeInsets.only(left: 5),
             child: SmallText(
               text: '2',
               color: Colors.orangeAccent,
             ),
           ),
           Container(
-            child: Icon(
-              Icons.add_rounded,
-              size: 20,
-              color: Colors.orangeAccent,
+            margin: const EdgeInsets.only(left: 5),
+            child: IconButton(
+              icon: const Icon(
+                Icons.delete_rounded,
+                size: 20,
+                color: Colors.orangeAccent,
+              ),
+              onPressed: _removeMe,
             ),
           ),
         ],
@@ -93,12 +107,25 @@ class QTY extends StatefulWidget {
 }
 
 class _QTYState extends State<QTY> {
-  int qty = 0;
+  int qty;
   _QTYState(this.qty);
 
+  void _incrementCounter() {
+    setState(() {
+      qty++;
+      print("I'm Working 1 ++");
+    });
+  }
 
+  void _decrementCounter() {
+    setState(() {
+      qty--;
+      print("I'm Working 1--");
+    });
+  }
 
   Widget build(BuildContext context) {
+    // String qty222 = widget.qty.toString();
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: const BoxDecoration(
@@ -112,19 +139,21 @@ class _QTYState extends State<QTY> {
       ),
       child: Row(
         children: <Widget>[
-          widget.qty != 0
+          qty != 0
               ? IconButton(
                   icon: const Icon(
                     Icons.remove_rounded,
                     size: 25,
                     color: Colors.orangeAccent,
                   ),
-                  onPressed: () => setState(() => qty--),
+                  onPressed: _decrementCounter, //() => setState(() => qty--),
                 )
-              : Container(),
+              : Container(
+                  child: const SizedBox(width: 20),
+                ),
           // Text(widget.qty.toString()),
           BigText(
-            text: widget.qty.toString(),
+            text: qty.toString(),
             color: Colors.orangeAccent,
           ),
           IconButton(
@@ -133,7 +162,7 @@ class _QTYState extends State<QTY> {
               size: 25,
               color: Colors.orangeAccent,
             ),
-            onPressed: () => setState(() => qty++),
+            onPressed: _incrementCounter, //() => setState(() => qty++),
           ),
         ],
       ),

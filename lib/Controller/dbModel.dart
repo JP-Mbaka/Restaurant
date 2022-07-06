@@ -1,8 +1,27 @@
-// class Orderfields {
+class Orderfields {
 
-// }
+  static final List<Order> orders = [];
+
+}
 
 
+class Order {
+  String id;
+  String index;
+  String foodname;
+  String foodprice;
+  String qty;
+  String total;
+
+  Order({
+    required this.id,
+    required this.index,
+    required this.foodname,
+    required this.foodprice,
+    required this.qty,
+    required this.total,
+  });
+}
 
 
 
