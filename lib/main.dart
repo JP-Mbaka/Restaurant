@@ -9,4 +9,5 @@ void main() {
   runApp(const Homeview());
 
   Orderfields.orders;
+  Orderfields.sumTotal;
 }

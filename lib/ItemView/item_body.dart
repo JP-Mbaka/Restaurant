@@ -1,3 +1,4 @@
+import 'package:NatRest/Controller/dbModel.dart';
 import 'package:flutter/material.dart';
 
 import '../Checkout/chk_out.dart';
@@ -24,12 +25,31 @@ class _ItemBodyState extends State<ItemBody> {
   String? food;
   String? price;
   int qty = 1;
+  int? total;
 
   _ItemBodyState({this.id, this.food, this.price});
+
+  void _incrementCounter() {
+    setState(() {
+      qty++;
+      total = int.parse(price!) * qty;
+      //print("I'm Working 1 ++");
+    });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      qty--;
+      total = int.parse(price!) * qty;
+      // print("I'm Working 1--");
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+
+    total = int.parse(price!) * qty;
 
     // String img =
     return Column(
@@ -139,8 +159,46 @@ class _ItemBodyState extends State<ItemBody> {
                     children: [
                       Container(
                         margin: EdgeInsets.only(left: 5),
-                        child: QTY(
-                          qty: qty,
+                        padding: const EdgeInsets.all(10),
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(20),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey,
+                                blurRadius: 5.0,
+                                offset: Offset(0, 5)),
+                          ],
+                        ),
+                        child: Row(
+                          children: <Widget>[
+                            qty != 0
+                                ? IconButton(
+                                    icon: const Icon(
+                                      Icons.remove_rounded,
+                                      size: 25,
+                                      color: Colors.orangeAccent,
+                                    ),
+                                    onPressed: _decrementCounter,
+                                  )
+                                : Container(
+                                    child: const SizedBox(width: 20),
+                                  ),
+                            BigText(
+                              text: qty.toString(),
+                              color: Colors.orangeAccent,
+                            ),
+                            IconButton(
+                              icon: const Icon(
+                                Icons.add_rounded,
+                                size: 25,
+                                color: Colors.orangeAccent,
+                              ),
+                              onPressed: _incrementCounter,
+                            ),
+                          ],
                         ),
                       ),
 
@@ -149,6 +207,13 @@ class _ItemBodyState extends State<ItemBody> {
                         margin: EdgeInsets.only(left: 10),
                         child: Add_to_Cart(
                           price: widget.price,
+                          sample: Order(
+                              id: id.toString(),
+                              index: "",
+                              foodname: food.toString(),
+                              foodprice: price.toString(),
+                              qty: qty.toString(),
+                              total: total.toString()),
                         ),
                       ),
                     ],

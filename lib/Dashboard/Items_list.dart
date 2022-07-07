@@ -46,10 +46,10 @@ class MyListItems extends StatefulWidget {
   MyListItems({Key? key, this.index}) : super(key: key);
 
   @override
-  State<MyListItems> createState() => _MyListItemsState();
+  State<MyListItems> createState() => MyListItemsState();
 }
 
-class _MyListItemsState extends State<MyListItems> {
+class MyListItemsState extends State<MyListItems> {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(

@@ -3,95 +3,48 @@ import 'dart:ui';
 import 'package:NatRest/Controller/dbModel.dart';
 import 'package:flutter/material.dart';
 
-class QTY_s extends StatefulWidget {
-  late int? qty;
-
-  QTY_s({Key? key, this.qty}) : super(key: key);
-
-  @override
-  State<QTY_s> createState() => _QTY_sState(qty!);
-}
-
-class _QTY_sState extends State<QTY_s> {
-  int id;
-
-  _QTY_sState(this.id);
-
-  void _removeMe() {
-    setState(() {
-      Orderfields.orders.removeWhere((element) => element.id == id as String);
-    });
-  }
-
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(
-          Radius.circular(20),
-        ),
-        boxShadow: [
-          BoxShadow(color: Colors.grey, blurRadius: 5.0, offset: Offset(0, 5)),
-        ],
-      ),
-      child: Row(
-        children: [
-          Container(
-            margin: EdgeInsets.only(left: 5),
-            child: SmallText(
-              text: '2',
-              color: Colors.orangeAccent,
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(left: 5),
-            child: IconButton(
-              icon: const Icon(
-                Icons.delete_rounded,
-                size: 20,
-                color: Colors.orangeAccent,
-              ),
-              onPressed: _removeMe,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
+import 'Checkout/chk_out.dart';
 
 class Add_to_Cart extends StatelessWidget {
   String? price;
+  Order sample;
 
-  Add_to_Cart({Key? key, this.price}) : super(key: key);
+  Add_to_Cart({Key? key, this.price, required this.sample}) : super(key: key);
 
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: Colors.orangeAccent,
-        borderRadius: BorderRadius.all(
-          Radius.circular(20),
+    return GestureDetector(
+      onTap: () {
+        Orderfields.orders.add(sample);
+        Navigator.push(
+            context, MaterialPageRoute(builder: ((context) => CheckoutMain())));
+      },
+      child: Container(
+        padding: EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: Colors.orangeAccent,
+          borderRadius: BorderRadius.all(
+            Radius.circular(20),
+          ),
+          boxShadow: const [
+            BoxShadow(
+                color: Colors.grey, blurRadius: 5.0, offset: Offset(0, 5)),
+          ],
         ),
-        boxShadow: const [
-          BoxShadow(color: Colors.grey, blurRadius: 5.0, offset: Offset(0, 5)),
-        ],
-      ),
-      child: Row(
-        children: [
-          BigText(
-            text: '₦ $price',
-            color: Colors.white,
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          BigText(
-            text: 'Add to Cart',
-            color: Colors.white,
-          )
-        ],
+        child: Row(
+          children: [
+            BigText(
+              text: '₦ $price',
+              color: Colors.white,
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            BigText(
+              text: 'Add to Cart',
+              color: Colors.white,
+            )
+          ],
+        ),
       ),
     );
   }
@@ -125,7 +78,6 @@ class _QTYState extends State<QTY> {
   }
 
   Widget build(BuildContext context) {
-    // String qty222 = widget.qty.toString();
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: const BoxDecoration(
@@ -166,34 +118,6 @@ class _QTYState extends State<QTY> {
           ),
         ],
       ),
-
-      // child: Row(
-      //   children: [
-      //     Container(
-      //       margin: EdgeInsets.only(right: 15),
-      //       child: Icon(
-      //         Icons.remove_rounded,
-      //         size: 25,
-      //         color: Colors.orangeAccent,
-      //       ),
-      //     ),
-      //     GestureDetector(
-      //       onTap: () {},
-      //       child: Container(
-      //         margin: EdgeInsets.only(right: 15),
-      //         child: BigText(
-      //           text: qty.toString(),
-      //           color: Colors.orangeAccent,
-      //         ),
-      //       ),
-      //     ),
-      //     Icon(
-      //       Icons.add_rounded,
-      //       size: 25,
-      //       color: Colors.orangeAccent,
-      //     ),
-      //   ],
-      // ),
     );
   }
 }

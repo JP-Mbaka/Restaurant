@@ -1,6 +1,7 @@
 class Orderfields {
 
   static final List<Order> orders = [];
+  static int sumTotal = 0;
 
 }
 

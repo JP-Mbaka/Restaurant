@@ -1,3 +1,4 @@
+import 'package:NatRest/Controller/dbModel.dart';
 import 'package:flutter/material.dart';
 // import 'package:restaurant_order_app/Checkout/chk_list.dart';
 // import 'package:restaurant_order_app/Components.dart';
@@ -43,7 +44,7 @@ class _CheckOutState extends State<CheckOut> {
             children: [
               SmallText(text: "Total"),
               BigText(
-                text: "₦ 3600",
+                text: Orderfields.sumTotal.toString(),
                 color: Colors.orangeAccent,
               )
             ],
