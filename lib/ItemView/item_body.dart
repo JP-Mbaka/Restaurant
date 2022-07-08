@@ -230,7 +230,7 @@ class _ItemBodyState extends State<ItemBody> {
                   ),
                   Container(
                     margin: EdgeInsets.only(left: 10, right: 10),
-                    padding: EdgeInsets.only(left: 30, right: 20),
+                    // padding: EdgeInsets.only(left: 10, right: 10),
                     child: const Recommend(),
                   )
                 ],

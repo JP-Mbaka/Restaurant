@@ -54,7 +54,7 @@ class Recommend extends StatefulWidget {
 }
 
 class _RecommendView extends State<Recommend> {
-  PageController pageController = PageController(viewportFraction: 1.0);
+  PageController pageController = PageController(viewportFraction: 0.8);
   TimeOfDay now = TimeOfDay.now();
 
   var _currPgValue = 0.0;
@@ -80,13 +80,20 @@ class _RecommendView extends State<Recommend> {
   Widget build(BuildContext context) {
     final List<Map<String, String>> JsonString =
         (now.hour < 12) ? morningJsonString : afternoonJsonString;
-        // if(){};
+    // if(){};
 
     return SizedBox(
       height: 250,
       child: PageView.builder(
+        pageSnapping: true,
         controller: pageController,
         itemCount: JsonString.length,
+        onPageChanged: (page) {
+          setState(() {
+            // print(page);
+            _currPgValue = page.toDouble();
+          });
+        },
         itemBuilder: (context, position) {
           String? period = JsonString[position]['period'];
           String? id = JsonString[position]['id'];

@@ -1,5 +1,6 @@
 import 'package:NatRest/Controller/dbModel.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 // import 'package:restaurant_order_app/Checkout/chk_list.dart';
 // import 'package:restaurant_order_app/Components.dart';
 
@@ -51,7 +52,7 @@ class _CheckOutState extends State<CheckOut> {
           ),
         ),
         ElevatedButton(
-            onPressed: () {},
+            onPressed: _launchURLInBrowser,
             style: ElevatedButton.styleFrom(
                 primary: Colors.orangeAccent,
                 padding: const EdgeInsets.symmetric(horizontal: 50)),
@@ -61,5 +62,14 @@ class _CheckOutState extends State<CheckOut> {
             ))
       ],
     );
+  }
+}
+
+_launchURLInBrowser() async {
+  const url = 'https://paystack.com/pay/restaurant';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    print('Could not launch $url');
   }
 }

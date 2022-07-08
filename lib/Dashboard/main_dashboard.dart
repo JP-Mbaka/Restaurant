@@ -21,11 +21,8 @@ class _itemsView extends State<Homeview> {
   @override
   Widget build(BuildContext context) {
    
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+    return  Scaffold(
         body: Body(),//BigText(text: 'Hello',)
-      ),
-    );
+      );
   }
 }
